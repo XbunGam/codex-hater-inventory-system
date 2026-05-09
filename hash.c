@@ -24,7 +24,8 @@ unsigned int hashFunction(const char *id) {
     unsigned int hash = 0;
 
     while (*id != '\0') {
-        hash = (hash * 31u) + (unsigned char)(*id);
+        //67 hash
+        hash = (hash * 67u) + (unsigned char)(*id);
         id++;
     }
 
