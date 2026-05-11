@@ -1,4 +1,4 @@
-# Inventory Management System
+# InvenSys
 
 A console-based inventory management system written in C for a CPE112 final project that can be run in Terminal. The program stores inventory items by ID, supports common inventory operations, saves data to a CSV file, and can display items sorted by price.
 
