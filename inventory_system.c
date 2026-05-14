@@ -6,11 +6,17 @@
 
 static void printMenu(void);
 
+/*
+ * Runs the console inventory management program.
+ * Input: menu choices and item data read from stdin.
+ * Output: returns 0 after saving inventory data and freeing memory.
+ */
 int main(void) {
     int choice;
     char searchId[ID_SIZE];
     Item *foundItem;
 
+    /* Prepare the hash table before loading persisted items into it. */
     initializeHashTable();
     loadFromFile();
 
@@ -18,6 +24,7 @@ int main(void) {
         printMenu();
         printf("Enter your choice: ");
 
+        /* Validate menu input so invalid text does not drive the switch logic. */
         if (scanf("%d", &choice) != 1) {
             clearInputBuffer();
             printf("Invalid input. Please enter a number from 1 to 7.\n");
@@ -54,6 +61,7 @@ int main(void) {
                 break;
             case 7:
                 printf("Exiting program. Freeing memory...\n");
+                /* Save first because cleanup releases all dynamically allocated items. */
                 saveToFile();
                 freeHashTable();
                 return 0;
@@ -63,4 +71,3 @@ int main(void) {
         }
     }
 }
-
