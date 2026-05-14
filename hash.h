@@ -1,7 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 
-#define TABLE_SIZE 10
+#define TABLE_SIZE 20
 #define ID_SIZE 50
 #define NAME_SIZE 100
 
