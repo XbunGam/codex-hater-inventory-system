@@ -57,7 +57,7 @@ int main(void) {
 
         switch (choice) {
             case 1:
-                printf(CYAN "--- Adding New Inventory ---\n" RESET);
+                printf(GREEN "--- Adding New Inventory ---\n" RESET);
                 addItem();
                 break;
             case 2:
@@ -65,7 +65,7 @@ int main(void) {
                 removeItem();
                 break;
             case 3:
-                printf(BLUE "--- Search Database ---\n" RESET);
+                printf(GREEN "--- Search Database ---\n" RESET);
                 printf("Enter Item ID: ");
                 readLine(searchId, ID_SIZE);
                 foundItem = searchItem(searchId);
@@ -80,14 +80,20 @@ int main(void) {
                 updateItem();
                 break;
             case 5:
-                printf(CYAN "--- Raw Hash Table View ---\n" RESET);
+                printf(GREEN "--- Raw Hash Table View ---\n" RESET);
                 displayHashTable();
                 break;
             case 6:
-                printf(CYAN "--- Price-Sorted Inventory (BST) ---\n" RESET);
+                printf(GREEN "--- Price-Sorted Inventory (BST) ---\n" RESET);
                 displaySortedByPrice();
                 break;
             case 7:
+                printf(YELLOW " Saving changes...\n" RESET);
+                saveToFile();
+                printf(GREEN " File Saved!\n" RESET);
+                break;
+
+            case 8:
                 printf(YELLOW " Saving changes and exiting...\n" RESET);
                 /* Persist before cleanup because freeHashTable releases all items. */
                 saveToFile();
@@ -111,9 +117,16 @@ int main(void) {
  * Output: none; formatted header text is written to stdout.
  */
 static void printHeader(void) {
-    printf(CYAN "==========================================\n");
-    printf(BOLD "       INVENTORY MANAGEMENT SYSTEM        \n");
-    printf(RESET CYAN "==========================================\n" RESET);
+    printf(GREEN "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+    printf(BOLD "  _____                       _____           \n");
+    printf(BOLD " |_   _|                     / ____|          \n");
+    printf(BOLD "   | |  _ ____   _____ _ __ | (___  _   _ ___ \n");
+    printf(BOLD "   | | | '_ \\ \\ / / _ \\ '_ \\ \\___ \\| | | / __|\n");
+    printf(BOLD "  _| |_| | | \\ V /  __/ | | |____) | |_| \\__ \\\n");
+    printf(BOLD " |_____|_| |_|\\_/ \\___|_| |_|_____/ \\__, |___/\n");
+    printf(BOLD "                                     __/ |    \n");
+    printf(BOLD "                                    |___/     \n");
+    printf(RESET GREEN "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" RESET);
 }
 
 /*
@@ -122,10 +135,10 @@ static void printHeader(void) {
  * Output: none; formatted menu text is written to stdout.
  */
 static void printMenu(void) {
-    printf(BOLD " DASHBOARD\n" RESET);
+    printf(BOLD " [DASHBOARD]\n" RESET);
     printf("  " BLUE "1." RESET " Add New Item          " BLUE "5." RESET " View Hash Table\n");
     printf("  " BLUE "2." RESET " Remove Item           " BLUE "6." RESET " View Sorted (Price)\n");
-    printf("  " BLUE "3." RESET " Search ID             " BLUE "7." RESET " Exit System\n");
-    printf("  " BLUE "4." RESET " Update Details\n");
+    printf("  " BLUE "3." RESET " Search ID             " BLUE "7." RESET " Save File\n");
+    printf("  " BLUE "4." RESET " Update Details        " BLUE "8." RESET " Exit System\n");
     printf("------------------------------------------\n");
 }
