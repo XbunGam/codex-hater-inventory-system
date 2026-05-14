@@ -22,11 +22,13 @@ typedef struct Item {
     char name[NAME_SIZE];
     int quantity;
     float price;
+    /* Next item in the same hash bucket when two IDs collide. */
     struct Item *next;
 } Item;
 
 extern Item *hashTable[TABLE_SIZE];
 
+/* Hash table operations for creating, finding, updating, displaying, and freeing items. */
 unsigned int hashFunction(const char *id);
 void initializeHashTable(void);
 Item *createItem(const char *id, const char *name, int quantity, float price);
@@ -39,6 +41,7 @@ void displayHashTable(void);
 void displaySortedByPrice(void);
 void freeHashTable(void);
 
+/* Shared input helpers used by the menu and inventory operations. */
 void readLine(char *buffer, int size);
 void clearInputBuffer(void);
 

@@ -16,21 +16,26 @@
 static void printHeader(void);
 static void printMenu(void);
 
+/*
+ * Runs the interactive inventory management program.
+ * Input: menu selections and item data read from stdin.
+ * Output: returns 0 after saving data and freeing allocated memory.
+ */
 int main(void) {
     int choice;
     char searchId[ID_SIZE];
     Item *foundItem;
 
-    // Load initial data structures
+    /* Initialize memory first, then merge any saved records from disk. */
     initializeHashTable();
     loadFromFile();
 
     while (1) {
-        // Clear screen for a modern "App" feel
+        /* Clear the screen each cycle so menu output remains readable. */
         #ifdef _WIN32
-            system("cls");   // Windows command
+            system("cls");
         #else
-            system("clear"); // Linux/macOS command
+            system("clear");
         #endif
 
         printHeader();
@@ -38,7 +43,7 @@ int main(void) {
         
         printf(BOLD YELLOW " > Select an option: " RESET);
 
-        // Validate numeric input
+        /* Reject non-numeric input before dispatching menu actions. */
         if (scanf("%d", &choice) != 1) {
             clearInputBuffer();
             printf(RED "\n [!] Invalid input. Please enter a number (1-7).\n" RESET);
@@ -48,7 +53,7 @@ int main(void) {
         }
         clearInputBuffer();
 
-        printf("\n"); // Padding for clarity
+        printf("\n");
 
         switch (choice) {
             case 1:
@@ -84,6 +89,7 @@ int main(void) {
                 break;
             case 7:
                 printf(YELLOW " Saving changes and exiting...\n" RESET);
+                /* Persist before cleanup because freeHashTable releases all items. */
                 saveToFile();
                 freeHashTable();
                 printf(GREEN " System shutdown clean. Goodbye!\n" RESET);
@@ -93,18 +99,28 @@ int main(void) {
                 break;
         }
 
-        // Action Pause: Prevents the menu from redrawing before user reads output
+        /* Pause so users can read command output before the next screen refresh. */
         printf(BOLD "\nPress Enter to return to menu..." RESET);
         getchar();
     }
 }
 
+/*
+ * Prints the application title banner.
+ * Input: none.
+ * Output: none; formatted header text is written to stdout.
+ */
 static void printHeader(void) {
     printf(CYAN "==========================================\n");
     printf(BOLD "       INVENTORY MANAGEMENT SYSTEM        \n");
     printf(RESET CYAN "==========================================\n" RESET);
 }
 
+/*
+ * Prints all available menu commands.
+ * Input: none.
+ * Output: none; formatted menu text is written to stdout.
+ */
 static void printMenu(void) {
     printf(BOLD " DASHBOARD\n" RESET);
     printf("  " BLUE "1." RESET " Add New Item          " BLUE "5." RESET " View Hash Table\n");
