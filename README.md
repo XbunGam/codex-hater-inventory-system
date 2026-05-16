@@ -84,9 +84,10 @@ When the program starts, it shows a dashboard with these options:
 | 4 | Update Details |
 | 5 | View Hash Table |
 | 6 | View Sorted by Price |
-| 7 | Exit System |
+| 7 | Save Files |
+| 8 | Exit System |
 
-Choose option `7` to save the inventory and exit safely.
+Choose option `8` to save the inventory and exit safely.
 
 ## Notes
 
