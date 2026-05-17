@@ -100,7 +100,7 @@ Choose option `8` to save the inventory and exit safely.
 
 ## Contributions
 
-#### 🔹 Pholawath Channukool 68070503443 — Data Structures & Core & BST (Foundation Layer)
+####  Pholawath Channukool 68070503443 — Data Structures & Core & BST (Foundation Layer)
 * **Module Ownership:** `hash.h` (100%), Base structural layers of `hash.c`.
 * **Responsibilities:**
     * Define core tracking architectures: `Item` and `BSTNode` structs.
@@ -109,7 +109,7 @@ Choose option `8` to save the inventory and exit safely.
     * Provide universal input serialization abstractions shared across all files (`readLine()`, `readInt()`, etc.).
 * *Note: This layer contains blocking architecture that must be prioritized and completed first.*
 
-#### 🔹 Nassasi Treesuptavee 68070503421 — CRUD Operations & UI (Interaction Layer)
+####  Nassasi Treesuptavee 68070503421 — CRUD Operations & UI (Interaction Layer)
 * **Module Ownership:** `main.c` (100%), Interaction/API functions inside `hash.c`.
 * **Responsibilities:**
     * Construct the core application loop dashboard utilizing ANSI escape sequences for stylized terminal updates.
@@ -117,7 +117,7 @@ Choose option `8` to save the inventory and exit safely.
     * Implement safe data mutation pathways for modifying existing system records: `updateItem()`.
     * Develop terminal rendering pipelines for targeted single-item lookups (`displayItem()`) and complete memory index printing (`displayHashTable()`).
 
-#### 🔹 Wasuphon Chaosahnguan 68070503453 — File I/O & Sorting & BST (Persistence & Analytics)
+####  Wasuphon Chaosahnguan 68070503453 — File I/O & Sorting & BST (Persistence & Analytics)
 * **Module Ownership:** `file.h` & `file.c` (100%), Sorting utility sub-routing inside `hash.c`.
 * **Responsibilities:**
     * Implement persistent storage transformations: serializing memory structures out to disk and parsing `.csv` files (`saveInventory()`, `loadInventory()`).
@@ -127,5 +127,3 @@ Choose option `8` to save the inventory and exit safely.
     
 
 ---
-
-## 🔄 Execution Workflow
