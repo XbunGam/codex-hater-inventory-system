@@ -96,3 +96,36 @@ Choose option `8` to save the inventory and exit safely.
 - The program automatically loads existing records from `data.csv` when it starts.
 - The program saves the current inventory to `data.csv` when exiting through the menu.
 - Item names should not contain commas because commas are used as CSV separators.
+
+
+## Contributions
+
+#### 🔹 Pholawath Channukool 68070503443 — Data Structures & Core & BST (Foundation Layer)
+* **Module Ownership:** `hash.h` (100%), Base structural layers of `hash.c`.
+* **Responsibilities:**
+    * Define core tracking architectures: `Item` and `BSTNode` structs.
+    * Implement structural foundations: table initialization (`initHashTable()`) and the primary string hash processing algorithm (`hashFunction()`).
+    * Manage node memory lifecycles: entity creation, hash indexing lookups, and table-wide recursive pointer clearing (`freeTable()`).
+    * Provide universal input serialization abstractions shared across all files (`readLine()`, `readInt()`, etc.).
+* *Note: This layer contains blocking architecture that must be prioritized and completed first.*
+
+#### 🔹 Nassasi Treesuptavee 68070503421 — CRUD Operations & UI (Interaction Layer)
+* **Module Ownership:** `main.c` (100%), Interaction/API functions inside `hash.c`.
+* **Responsibilities:**
+    * Construct the core application loop dashboard utilizing ANSI escape sequences for stylized terminal updates.
+    * Build standard inventory ingestion and deletion APIs: `addItem()` and `removeItem()`.
+    * Implement safe data mutation pathways for modifying existing system records: `updateItem()`.
+    * Develop terminal rendering pipelines for targeted single-item lookups (`displayItem()`) and complete memory index printing (`displayHashTable()`).
+
+#### 🔹 Wasuphon Chaosahnguan 68070503453 — File I/O & Sorting & BST (Persistence & Analytics)
+* **Module Ownership:** `file.h` & `file.c` (100%), Sorting utility sub-routing inside `hash.c`.
+* **Responsibilities:**
+    * Implement persistent storage transformations: serializing memory structures out to disk and parsing `.csv` files (`saveInventory()`, `loadInventory()`).
+    * Provide safe structural routing functions utilized heavily during raw text parsing operations (`insertLoadedItem()`).
+    * Construct ephemeral Binary Search Trees to handle transient data points for multi-axis price sorting (`buildBSTFromHash()`, `insertBSTNode()`).
+    * Execute memory-safe pointer ordering and sorted print outputs before tearing down temporary structures (`inorderBST()`, `freeBST()`).
+    
+
+---
+
+## 🔄 Execution Workflow
